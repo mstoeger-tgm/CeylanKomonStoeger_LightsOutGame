@@ -1,11 +1,14 @@
 package stoeger;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  * 
  * @author Patrick Komon
  * @version 10-12-2014
  */
-public class Game {
+public class Game implements ActionListener{
 
 	private GUI gui;
 
@@ -14,9 +17,9 @@ public class Game {
 	}
 	
 	/**
-	 * Ändert den Zustand eines bestimmten und
+	 * ï¿½ndert den Zustand eines bestimmten und
 	 * seiner umliegenden Schalter
-	 * (links, rechts, darüber, darunter)
+	 * (links, rechts, darï¿½ber, darunter)
 	 * @param switchIndex
 	 */
 	public void clicked(int switchIndex) {
@@ -35,5 +38,10 @@ public class Game {
 
 	public static void main(String[] args) {
 		new Game();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		gui.init();
 	}
 }

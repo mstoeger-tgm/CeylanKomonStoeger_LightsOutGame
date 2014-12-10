@@ -1,5 +1,9 @@
 package stoeger;
-
+/**
+ * Interface welches anzeigt, welche Methoden dem Controller sicher zur Steuerung des Spiels zur Verfuegung stehen
+ * @author Michael Stoeger
+ * @version 10.12.2014
+ */
 public interface LightsGame {
 	/**
 	 * Schalter werden beginnend mit 0 in Schreibrichtung gezaehlt

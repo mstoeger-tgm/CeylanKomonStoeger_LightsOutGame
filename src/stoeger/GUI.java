@@ -28,14 +28,16 @@ public class GUI extends JFrame implements LightsGame{
 	 * @param g
 	 */
 	public GUI (Game g){
+		super("LightsOut Game");
 		this.g=g; //Controller sichern
+		schalter = new LinkedList<Schalter>();
 		tco = new TimeCounter(this); //TimeCounter initialisieren
 		tc = new Thread(tco); //TimeCounter in Thread verpacken
-		time = new JLabel(); //Label fuer Zeitzaehler initialisieren
+		time = new JLabel("0:0:0"); //Label fuer Zeitzaehler initialisieren
 		moves = new JLabel("Moves: 0"); //Label fuer Moves initialisieren
 		mitte = new JPanel(new GridLayout(FIELDS, FIELDS,0,0)); //JPanel in der mitte initialisieren und GridLayout setzen
 		neu = new JButton("Neu"); //JButton fuer neues Spiel initialisieren
-		JPanel unten = new JPanel(); //JPanel als Container fuer Objekte im unteren Bereich des Fensters
+		JPanel unten = new JPanel(new GridLayout(1,3,10,10)); //JPanel als Container fuer Objekte im unteren Bereich des Fensters
 		unten.add(moves); //Objekte zum unteren Container hinzufuegen
 		unten.add(time);
 		unten.add(neu);
@@ -43,6 +45,7 @@ public class GUI extends JFrame implements LightsGame{
 		add(mitte); //Mittleren Container zum Frame hinzufuegen
 		init(); //Methode zum Spiel initialisieren aufrufen
 		neu.addActionListener(g); //ActionListener setzen(Controller Objekt)
+		setDefaultCloseOperation(3); //Damit sich das Programm beim Schliessen des Fensters beendet
 		setSize(500,500); //Groesse des Fensters setzen
 		setVisible(true); //Fenster sichtbar machen
 	}
@@ -92,7 +95,10 @@ public class GUI extends JFrame implements LightsGame{
 			schalter.add(new Schalter(isOn, i, this)); //Schalter zur Liste hinzufuegen
 			mitte.add(schalter.get(i)); //Schalter zum Panel in der Mitte hinzufuegen
 		}
-		tc.start(); //Zeitzaehler neu starten
+		try{
+			tc.start(); //Zeitzaehler neu starten
+		}catch(Exception e){} //Thread wirft eine Exception, da er nicht ordnungsgemaess beendet wurde
+		enableAll(); //Aktiviert wieder alle Elemente in der GUI
 	}
 	@Override
 	/**
@@ -121,5 +127,21 @@ public class GUI extends JFrame implements LightsGame{
 	public void setTime(String t){
 		time.setText(t);
 	}
-	
+	/**
+	 * Deaktiviert alle Elemente der GUI ausser des "Neu" Buttons
+	 * Soll verwendet werden, wenn der Spieler gewinnt
+	 */
+	public void disableAll(){
+		for(Schalter a:schalter) //Fuer alle Schalter
+			a.setEnabled(false); //Deaktivieren
+		tco.stop(); //Zeitzaehler anhalten
+	}
+	/**
+	 * Aktiviert alle Schalter wieder
+	 * Wird bei init() aufgerufen
+	 */
+	public void enableAll(){
+		for(Schalter a:schalter) //Fuer alle Schalter
+			a.setEnabled(true); //Aktivieren
+	}
 }

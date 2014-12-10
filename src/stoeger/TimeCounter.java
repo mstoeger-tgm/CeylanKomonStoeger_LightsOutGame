@@ -1,4 +1,7 @@
 package stoeger;
+
+import java.text.DateFormat;
+
 /**
  * Zeitzaehler fuer das LightsOut Spiel
  * Muss in Thread verpackt werden, da bei blossem Aufrufen der run() Methode das Programm fuer 24h einfrieren wuerde
@@ -9,6 +12,7 @@ public class TimeCounter implements Runnable{
 	private GUI g; //Gespeichertes GUI Objekt
 	private boolean stop; //Zeigt an ob der Zaehler gestoppt werden soll
 	private int sec, min, hour; //Variablen fuer Sekunde, Minute, Stunde
+	private int start;
 	/**
 	 * Erzeugt einen neuen Zeitzaehler
 	 * @param g
@@ -16,6 +20,26 @@ public class TimeCounter implements Runnable{
 	public TimeCounter(GUI g){
 		this.g=g; //GUI speichern
 		stop=false; //nicht stoppen
+		start = timeToIntInSec();
+		
+	}
+	public int timeToIntInSec(){
+		String toConvert = DateFormat.getTimeInstance(DateFormat.MEDIUM).toString();
+		String tmp = ""+toConvert.charAt(0)+toConvert.charAt(1);
+		int std = Integer.parseInt(tmp);
+		tmp = ""+toConvert.charAt(3)+toConvert.charAt(4);
+		int min = Integer.parseInt(tmp);
+		tmp = ""+toConvert.charAt(6)+toConvert.charAt(7);
+		int sec = Integer.parseInt(tmp);
+		while(std!=0){
+			min+=60;
+			std--;
+		}
+		while(min!=0){
+			sec+=60;
+			min--;
+		}
+		return sec;
 	}
 	/**
 	 * Standardkonstruktor blockieren, da sonst das Programm abstuerzt
@@ -34,19 +58,12 @@ public class TimeCounter implements Runnable{
 			} catch (InterruptedException e) { //Muss gecatcht werden, da Thread.sleep() unterbrochen werden kann
 				System.err.println("Sleep interrupted"); //Fehlermeldung in Konsole ausgeben
 			}
-			sec++; //Sekunde hochzaehlen
-			if(sec==60){ //Nach einer Minute
-				sec=0; //Sekunde wieder auf 0 setzen
-				min++; //Minuten erhoehen
-			}
-			if(min==60){ //Nach einer Stunde
-				min=0; //Minuten auf 0 setzen
-				hour++; //Stunden erhoehen
-			}if(hour==24){ //Nach 24 Stunden
-				stop(); //Thread stoppen
-			}
-			String time = Integer.toString(hour)+":"+Integer.toString(min)+":"+Integer.toString(sec); //Zeit zusammensetzen
-			g.setTime(time); //Zeit in JLabel in GUI schreiben
+			int diff = timeToIntInSec()-start;
+			int min =0;
+			for(;diff<60;diff-=60, min++){}
+			int std=0;
+			for(;min<60;min-=60, std++){}
+			g.setTime(Integer.toString(std)+":"+Integer.toString(min)+":"+Integer.toString(diff)); //Zeit in JLabel in GUI schreiben
 		}
 	}
 	/**

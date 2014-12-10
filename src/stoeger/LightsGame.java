@@ -20,5 +20,10 @@ public interface LightsGame {
 	/**
 	 * Gibt die Laenge des Feldes zurueck
 	 */
-	public void getField();
+	public int getField();
+	/**
+	 * aktualisiert die Anzeigen des Spiels
+	 * @param moves
+	 */
+	public void refresh(String moves);
 }

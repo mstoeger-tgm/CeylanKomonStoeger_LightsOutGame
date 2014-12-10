@@ -1,8 +1,7 @@
-package stoeger;
+package lightsout;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
 /**
  * Schalter fuer das LightsOut Spiel
  * @author Michael Stoeger
@@ -12,7 +11,7 @@ public class Schalter extends JPanel implements MouseListener {
 	private boolean isOn, mouseOn; // isOn <- Status des Schalters, mouseOn <- ob die Maus ueber dem Schalter schwebt
 	private int num; // Nummer des Schalters
 	private GUI g; // Gespeichertes GUI Objekt
-	private boolean enabled;
+	private boolean enabled; //Speichert ob das Panel angeklickt werden kann
 	/**
 	 * Aendert den Status des Schaltes
 	 */
@@ -27,7 +26,6 @@ public class Schalter extends JPanel implements MouseListener {
 	 * Konstruktor fuer den Schalter Benoetigt als Paramter: isOn <- ob der
 	 * Schalter beim erstellen eingeschalten sein soll num <- Fortlaufende
 	 * Nummerierung der Schalter
-	 * 
 	 * @param isOn
 	 * @param num
 	 * @param g
@@ -42,7 +40,6 @@ public class Schalter extends JPanel implements MouseListener {
 	}
 	/**
 	 * Gibt zurueck ob der Schalter aktiviert ist
-	 * 
 	 * @return boolean
 	 */
 	public boolean isOn() {
@@ -54,7 +51,7 @@ public class Schalter extends JPanel implements MouseListener {
 	 * @param arg0
 	 */
 	public void mouseClicked(MouseEvent arg0) {
-		if(enabled)
+		if(enabled) //darf das Panel angeklickt werden
 			g.clicked(num);
 	}
 	@Override
@@ -103,6 +100,12 @@ public class Schalter extends JPanel implements MouseListener {
 		g.drawRect(0, 0, getWidth(), getHeight()); // Rahmen zeichnen
 	}
 	@Override
+	/**
+	 * Ueberschreibt die setEnabled Methode des JFrames
+	 * Setzt den enabled Wert ensprechend des Parameters
+	 * Ist der Wert auf False kann das Panel nicht angeklickt werden
+	 * Grafische Darstellung bleibt durch diesen Wert unberuehrt
+	 */
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}

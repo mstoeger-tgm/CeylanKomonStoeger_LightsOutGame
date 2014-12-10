@@ -1,4 +1,4 @@
-package stoeger;
+package lightsout;
 import java.awt.*;
 import java.util.*;
 import javax.swing.*;
@@ -84,7 +84,9 @@ public class GUI extends JFrame implements LightsGame{
 	 * und startet den Zeitzaehler neu
 	 */
 	public void init() {
-		tco.init(); //Initialisert das Zeitzaehler Objekt
+		tco.stop(); //Stoppt den aktuellen Zeitzaehler
+		tco = new TimeCounter(this); //Erzeugt einen neuen Zeitzaehler
+		tc = new Thread(tco); //Erzeugt einen neuen Thread
 		schalter.clear(); //Loescht alle Schalter aus der Liste
 		mitte.removeAll(); //Loescht alle Schalter aus dem Panel in der Mitte
 		for(int i=0;i<FIELDS*FIELDS;i++){ //Neue Schleife fuer alle Plaetze im Spielfeld
@@ -95,10 +97,10 @@ public class GUI extends JFrame implements LightsGame{
 			schalter.add(new Schalter(isOn, i, this)); //Schalter zur Liste hinzufuegen
 			mitte.add(schalter.get(i)); //Schalter zum Panel in der Mitte hinzufuegen
 		}
+		enableAll(); //Aktiviert wieder alle Elemente in der GUI
 		try{
 			tc.start(); //Zeitzaehler neu starten
 		}catch(Exception e){} //Thread wirft eine Exception, da er nicht ordnungsgemaess beendet wurde
-		enableAll(); //Aktiviert wieder alle Elemente in der GUI
 	}
 	@Override
 	/**

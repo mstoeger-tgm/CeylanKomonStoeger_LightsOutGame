@@ -1,4 +1,4 @@
-package stoeger;
+package lightsout;
 /**
  * Interface welches anzeigt, welche Methoden dem Controller sicher zur Steuerung des Spiels zur Verfuegung stehen
  * @author Michael Stoeger

@@ -34,7 +34,7 @@ public class Game implements ActionListener{
 		if(switchIndex%GUI.FIELDS!=4){//wenn der Schalter nicht am rechten Ende der Zeile ist
 			gui.switchState(switchIndex+1);
 		}
-		if(switchIndex>GUI.FIELDS){ //wenn der Schalter nicht am oberen Ende des Spielfelds ist
+		if(switchIndex>GUI.FIELDS-1){ //wenn der Schalter nicht am oberen Ende des Spielfelds ist
 			gui.switchState(switchIndex-GUI.FIELDS);
 		}
 		if(switchIndex<GUI.FIELDS*GUI.FIELDS-GUI.FIELDS){ //wenn der Schalter nicht am unteren Ende des Spielfelds ist

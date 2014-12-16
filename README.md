@@ -22,7 +22,16 @@ Zur Benutzung
 -------------
 Empfehlung: Eclipse.
 ######Erforderlich:
-+ *Java* [Java-Download](https://www.java.com/de/download/manual.jsp)
-+ *Java Laufzeit- Umgebung (64 -/32 Bit)* [64 Bit](http://www.chip.de/downloads/Java-Runtime-Environment-64-Bit_42224883.html) [32 Bit] (http://www.chip.de/downloads/Java-Runtime-Environment-32-Bit_13014576.html)
++ **Java** [Java-Download](https://www.java.com/de/download/manual.jsp)
++ **Java Laufzeit - Umgebung (64 -/32 Bit)** [64 Bit](http://www.chip.de/downloads/Java-Runtime-Environment-64-Bit_42224883.html) [32 Bit] (http://www.chip.de/downloads/Java-Runtime-Environment-32-Bit_13014576.html)
++ **Für Anfänger :** [How to install] (http://www.wikihow.com/Download,-Install,-and-Run-JDK-and-Eclipse)
+
+Kontakt
+-------
+**Stöger Michael :** mstoeger@student.tgm.ac.at
+**Komon Patrick :** pkomon@student.tgm.ac.at
+**Ceylan Muhammed :** mceylan@student.tgm.ac.at
 
 
+
+Ende

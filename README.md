@@ -28,9 +28,9 @@ Empfehlung: Eclipse.
 
 Kontakt
 -------
-**Stöger Michael :** mstoeger@student.tgm.ac.at
-**Komon Patrick :** pkomon@student.tgm.ac.at
-**Ceylan Muhammed :** mceylan@student.tgm.ac.at
++ **Stöger Michael :** mstoeger@student.tgm.ac.at
++ **Komon Patrick :** pkomon@student.tgm.ac.at
++ **Ceylan Muhammed :** mceylan@student.tgm.ac.at
 
 
 

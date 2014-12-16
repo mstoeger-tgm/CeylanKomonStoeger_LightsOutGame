@@ -4,11 +4,11 @@ Team Members : Ceylan Muhammed, Komon Patrick, Stöger Michael
 
 Inhalt:
 -------
-Game: Controller-Klasse, enthält die Funktionalitäten des Spiels
-GUI: Grafik (Buttons, Labels, etc..)
-LightsGame: Interface. Methoden für Steuerung des Spieles, stehen dem Controller zur Verfügung.
-Schalter: enthält die Schalter ??
-TimeCounter: Zeit 
++**Game:** Controller-Klasse, enthält die Funktionalitäten des Spiels
++**GUI:** Grafik (Buttons, Labels, etc..)
++**LightsGame:** Interface. Methoden für Steuerung des Spieles, stehen dem Controller zur Verfügung.
++**Schalter:** enthält die Schalter ??
++**TimeCounter:** Zeit 
 
 
 

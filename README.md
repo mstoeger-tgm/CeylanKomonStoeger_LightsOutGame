@@ -1,6 +1,6 @@
 CeylanKomonStoeger_LightsOutGame
 ================================
-##**Team Members :** Ceylan Muhammed, Komon Patrick, Stöger Michael 
+###**Team Members :** Ceylan Muhammed, Komon Patrick, Stöger Michael 
 
 Inhalt:
 -------

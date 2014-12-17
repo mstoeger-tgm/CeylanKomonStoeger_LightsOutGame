@@ -45,7 +45,7 @@ public class GUI extends JFrame implements LightsGame{
 		add(mitte); //Mittleren Container zum Frame hinzufuegen
 		init(); //Methode zum Spiel initialisieren aufrufen
 		neu.addActionListener(g); //ActionListener setzen(Controller Objekt)
-		setDefaultCloseOperation(3); //Damit sich das Programm beim Schliessen des Fensters beendet
+		setDefaultCloseOperation(EXIT_ON_CLOSE); //Damit sich das Programm beim Schliessen des Fensters beendet
 		setSize(500,500); //Groesse des Fensters setzen
 		setVisible(true); //Fenster sichtbar machen
 	}
@@ -89,11 +89,11 @@ public class GUI extends JFrame implements LightsGame{
 		tc = new Thread(tco); //Erzeugt einen neuen Thread
 		schalter.clear(); //Loescht alle Schalter aus der Liste
 		mitte.removeAll(); //Loescht alle Schalter aus dem Panel in der Mitte
+		
+		Random random = new Random();
+		boolean isOn;
 		for(int i=0;i<FIELDS*FIELDS;i++){ //Neue Schleife fuer alle Plaetze im Spielfeld
-			int temp = (int)(Math.random()*2+1); //Temporaere Veriable fuer isOn Boolean
-			boolean isOn = false; //Standardmaessig ist der Schalter deaktiviert
-			if(temp!=1) //Ist die Temp. Variable nicht 1
-				isOn=true; //Wird der Schalter aktiviert
+			isOn=random.nextBoolean();
 			schalter.add(new Schalter(isOn, i, this)); //Schalter zur Liste hinzufuegen
 			mitte.add(schalter.get(i)); //Schalter zum Panel in der Mitte hinzufuegen
 		}
@@ -101,6 +101,7 @@ public class GUI extends JFrame implements LightsGame{
 		try{
 			tc.start(); //Zeitzaehler neu starten
 		}catch(Exception e){} //Thread wirft eine Exception, da er nicht ordnungsgemaess beendet wurde
+		validate();
 	}
 	@Override
 	/**

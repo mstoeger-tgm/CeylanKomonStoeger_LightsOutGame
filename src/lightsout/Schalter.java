@@ -1,4 +1,4 @@
-package lightsout;
+﻿package lightsout;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -16,10 +16,7 @@ public class Schalter extends JPanel implements MouseListener {
 	 * Aendert den Status des Schaltes
 	 */
 	public void switchState() {
-		if (isOn) // Wenn der Schalter an ist
-			isOn = false; // Ausschalten
-		else // Wenn der Schalter aus ist
-			isOn = true; // Einschalten
+		isOn = !isOn; //Schalterzustand invertieren
 		repaint(); // Neu zeichnen um Farbtoene zu uebernehmen
 	}
 	/**

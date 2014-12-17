@@ -36,13 +36,18 @@ public class TimeCounter implements Runnable{
 				System.err.println("Sleep interrupted"); //Fehlermeldung in Konsole ausgeben
 			}
 			long diff = (System.currentTimeMillis()-start)/1000; //Differenz der 2 Zeitpunkte berechnen
-			int min =0; //Minuten
-			for(;diff>=60;diff-=60, min++){} //So lange 60 Sekunden abziehen und 1 Minute hinzufuegen, bis keine volle Minute mehr vorhanden ist
-			int std=0; //Stunden
-			for(;min>=60;min-=60, std++){} //So lange 60 Minuten abziehen und 1 Stunde hinzufuegen, bis keine volle Stunde mehr vorhanden ist
+//			int min =0; //Minuten
+//			for(;diff>=60;diff-=60, min++){} //So lange 60 Sekunden abziehen und 1 Minute hinzufuegen, bis keine volle Minute mehr vorhanden ist
+//			int std=0; //Stunden
+//			for(;min>=60;min-=60, std++){} //So lange 60 Minuten abziehen und 1 Stunde hinzufuegen, bis keine volle Stunde mehr vorhanden ist
+			
+			int min = (int) (diff/60);
+			int std = min/60;
+			
 			if(std>=24) //Wenn 24 Stunden vergangen sind
 				stop(); //Zaehler stoppen
-			g.setTime(Integer.toString(std)+":"+Integer.toString(min)+":"+Long.toString(diff)); //Zeit in JLabel in GUI schreiben
+			
+			g.setTime(Integer.toString(std)+":"+Integer.toString(min)+":"+Long.toString(diff%60)); //Zeit in JLabel in GUI schreiben
 		}
 	}
 	/**
